@@ -11,26 +11,56 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 <body>
-   
+   <div class='container'>
+    <div class="row">
+        <div class="col-md-12 m-5">
+            <h1>Link Collector</h1>
+        </div>
+    </div>
+    <form method="POST" action="/">
+    <div class='row m-5'>
+        
+        <div class='col-md-4'>
+           
+                {% csrf_token %}
+                <input class="form-control" type="text" id="site" placeholder="enter site address" name="site" >
+           
+        </div>
+        <div class="col-md-2">
+            <button class="btn bg-primary text-white" type="submit">Scrape</button>
+        </div>
 
-    <table class="table">
-        <thead class="table-dark">
-         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Link</th>
-         </tr>
-        </thead>
-        <tbody>
-            {% for link in data %}
-            <tr>
-                <td>{{link.id}}</td>
-                <td>{{link.name}}</td>
-                <td>{{link.address}}</td>
-             </tr>
-             {% endfor %}
-        </tbody>
-      </table>
+        <div class="col-md-6">
+            <a class="btn bg-warning" href="/delete" >Delete</a>
+        </div>
+    
+    </div>
+</form>
+        <div class='row'>
+            <div class="col-md-8">
+                <table class="table">
+                    <thead class="table-dark">
+                     <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Link</th>
+                     </tr>
+                    </thead>
+                    <tbody>
+                        {% for link in data %}
+                        <tr>
+                            <td>{{link.id}}</td>
+                            <td>{{link.name}}</td>
+                            <td>{{link.address}}</td>
+                         </tr>
+                         {% endfor %}
+                    </tbody>
+                  </table>
+            </div>    
+        </div>
+   </div>
+
+   
       
 </body>
 </html>
